@@ -23,9 +23,12 @@ namespace Tasks
             // Console.WriteLine(Task2_3(Console.ReadLine()));
             // Console.WriteLine(Task2_3(Console.ReadLine()));
             // Console.WriteLine(Task2_4(Console.ReadLine()));
-            Console.WriteLine(Task2_5(Console.ReadLine()));
-            
-
+            //  Console.WriteLine(Task2_5(Console.ReadLine()));
+            //Console.WriteLine(Task3_1(Console.ReadLine()));
+            //Console.WriteLine(Task3_3(Input()));
+            //Console.WriteLine(Task3_4(Console.ReadLine()));
+            //Console.WriteLine(Task3_5(Convert.ToInt32(Console.ReadLine())));
+            Console.WriteLine(Task3_2(Convert.ToInt32(Console.ReadLine())));
         }
 
        static int[]Input()
@@ -232,6 +235,181 @@ namespace Tasks
             else
                 return true;
         }
-        
+
+        /*
+				Warmup-1 > posNeg
+		prev  |  next  |  chance
+		Given 2 int values, return true if one is negative and one is positive. Except if the parameter "negative" is true, then return true only if both are negative.
+		
+		
+		posNeg(1, -1, false) → true
+		posNeg(-1, 1, false) → true
+		posNeg(-4, -5, true) → true
+		
+		
+		Expected	Run
+		posNeg(1, -1, false) → true	true	OK
+		posNeg(-1, 1, false) → true	true	OK
+		posNeg(-4, -5, true) → true	true	OK
+		posNeg(-4, -5, false) → false	false	OK
+		posNeg(-4, 5, false) → true	true	OK
+		posNeg(-4, 5, true) → false	false	OK
+		posNeg(1, 1, false) → false	false	OK
+		posNeg(-1, -1, false) → false	false	OK
+		posNeg(1, -1, true) → false	false	OK
+		posNeg(-1, 1, true) → false	false	OK
+		posNeg(1, 1, true) → false	false	OK
+		posNeg(-1, -1, true) → true	true	OK
+		posNeg(5, -5, false) → true	true	OK
+		posNeg(-6, 6, false) → true	true	OK
+		posNeg(-5, -6, false) → false	false	OK
+		posNeg(-2, -1, false) → false	false	OK
+		posNeg(1, 2, false) → false	false	OK
+		posNeg(-5, 6, true) → false	false	OK
+		posNeg(-5, -5, true) → true	true	OK
+		
+		All Correct
+     */
+
+        static bool Task3_1(string st)
+        {
+            string [] str = st.Split(' ');
+            bool a=false;           
+                if (Convert.ToBoolean(str[2])==true||(str[0][0]!=str[1][0]))
+                {
+                    a = true;                    
+                }                                    
+            return a;
+        }
+
+        /*   Given an int n, return true if it is within 10 of 100 or 200. Note: Math.abs(num) computes the absolute value of a number.
+
+
+           nearHundred(93) → true
+           nearHundred(90) → true
+           nearHundred(89) → false
+
+           Expected Run
+
+           nearHundred(93) → true	true	OK
+           nearHundred(90) → true	true	OK
+           nearHundred(89) → false	false	OK
+           nearHundred(110) → true	true	OK
+           nearHundred(111) → false	false	OK
+           nearHundred(121) → false	false	OK
+           nearHundred(-101) → false	false	OK
+           nearHundred(-209) → false	false	OK
+           nearHundred(190) → true	true	OK
+           nearHundred(209) → true	true	OK
+           nearHundred(0) → false	false	OK
+           nearHundred(5) → false	false	OK
+           nearHundred(-50) → false	false	OK
+           nearHundred(191) → true	true	OK
+           nearHundred(189) → false	false	OK
+           nearHundred(200) → true	true	OK
+           nearHundred(210) → true	true	OK
+           nearHundred(211) → false	false	OK
+           nearHundred(290) → false	false	OK
+
+           All Correct
+        */
+
+        static bool Task3_2(int x)
+        {
+            return ((Math.Abs(100-x)<=10) || (Math.Abs(200 - x) <= 10));
+        }
+        /*
+    Warmup-1 > makes10
+
+	Given 2 ints, a and b, return true if one if them is 10 or if their sum is 10.
+
+
+	makes10(9, 10) → true
+	makes10(9, 9) → false
+	makes10(1, 9) → true
+
+	Expected	Run
+	makes10(9, 10) → true	true	OK
+	makes10(9, 9) → false	false	OK
+	makes10(1, 9) → true	true	OK
+	makes10(10, 1) → true	true	OK
+	makes10(10, 10) → true	true	OK
+	makes10(8, 2) → true	true	OK
+	makes10(8, 3) → false	false	OK
+	makes10(10, 42) → true	true	OK
+	makes10(12, -2) → true	true	OK
+
+All Correct
+     */
+
+        static bool Task3_3(int[] mas)
+        {
+            return (mas[0] + mas[1] == 10||mas[0]==10||mas[1]==10);              
+        }
+
+        /*
+    Warmup-1 > parrotTrouble
+
+		We have a loud talking parrot. The "hour" parameter is the current hour time in the range 0..23. We are in trouble if the parrot is talking and the hour is before 7 or after 20. Return true if we are in trouble.
+		
+		
+		parrotTrouble(true, 6) → true
+		parrotTrouble(true, 7) → false
+		parrotTrouble(false, 6) → false
+		
+		Expected	Run
+		parrotTrouble(true, 6) → true	true	OK
+		parrotTrouble(true, 7) → false	false	OK
+		parrotTrouble(false, 6) → false	false	OK
+		parrotTrouble(true, 21) → true	true	OK
+		parrotTrouble(false, 21) → false	false	OK
+		parrotTrouble(false, 20) → false	false	OK
+		parrotTrouble(true, 23) → true	true	OK
+		parrotTrouble(false, 23) → false	false	OK
+		parrotTrouble(true, 20) → false	false	OK
+		parrotTrouble(false, 12) → false	false	OK
+		
+		All Correct
+     */
+
+        static bool Task3_4(string st)
+        {
+            string[] str = st.Split(' ');
+            return ((20 < (Convert.ToInt32(str[1]))||(Convert.ToInt32(str[1]))<7)&&Convert.ToBoolean(str[0])==true);// У нас проблемы если попугай говорит толко если это до 7 часов или после 20-ти. во всех остальных случах нам всё равно говорит ли попугай или молчит.
+        }
+
+        /*
+   Warmup-1 > diff21
+
+       Given an int n, return the absolute difference between n and 21, except return double the absolute difference if n is over 21.
+
+
+       diff21(19) → 2
+       diff21(10) → 11
+       diff21(21) → 0
+
+       Expected	Run
+       diff21(19) → 2	2	OK
+       diff21(10) → 11	11	OK
+       diff21(21) → 0	0	OK
+       diff21(22) → 2	2	OK
+       diff21(25) → 8	8	OK
+       diff21(30) → 18	18	OK
+       diff21(0) → 21	21	OK
+       diff21(1) → 20	20	OK
+       diff21(2) → 19	19	OK
+       diff21(-1) → 22	22	OK
+       diff21(-2) → 23	23	OK
+       diff21(50) → 58	58	OK
+
+       All Correct
+    */
+
+        static int Task3_5(int x)
+        {
+            return Math.Abs(21-x);// Функция абс приводит значение к целому не отрицательному.
+        }
+
+
     }
 }
