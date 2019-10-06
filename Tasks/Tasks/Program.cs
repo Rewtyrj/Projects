@@ -8,6 +8,8 @@ namespace Tasks
 {
     class Program
     {
+        //Метод Task3_1 не праивльно рабьатает
+        // Реализовать импорт метода консоли и в целом
         static void Main(string[] args)
         {
 
@@ -25,13 +27,13 @@ namespace Tasks
             // Console.WriteLine(Task2_4(Console.ReadLine()));
             //  Console.WriteLine(Task2_5(Console.ReadLine()));
             //Console.WriteLine(Task3_1(Console.ReadLine()));
-            //Console.WriteLine(Task3_3(Input()));
-            //Console.WriteLine(Task3_4(Console.ReadLine()));
-            //Console.WriteLine(Task3_5(Convert.ToInt32(Console.ReadLine())));
+           // Console.WriteLine(Task3_3(Input()));
+           // Console.WriteLine(Task3_4(Console.ReadLine()));
+          // Console.WriteLine(Task3_5(Convert.ToInt32(Console.ReadLine())));
             // Console.WriteLine(Task3_2(Convert.ToInt32(Console.ReadLine())));
             // Console.WriteLine(Task4_1(Console.ReadLine()));
             // Console.WriteLine(Task4_2(Input()));
-            // Console.WriteLine(Task4_3(Console.ReadLine()));
+           //  Console.WriteLine(Task4_3(Console.ReadLine()));
             // Console.WriteLine(Task4_4(Input()));
             Console.WriteLine(Task4_5(Console.ReadLine()));
         }
@@ -234,8 +236,9 @@ namespace Tasks
 
       static bool Task2_5(string st) 
         { 
-            string [] str = st.Split(' ');            
-            if (Convert.ToBoolean(str[0]) == true && Convert.ToBoolean(str[1]) == false)// Мы не спим только в том случае если будний день и если это не отпуск. Соответвенно во всех остльных случаях выводиться Тру, тоесть мы спим. 
+            string [] str = st.Split(' ');
+            // Мы не спим только в том случае если будний день и если это не отпуск. Соответвенно во всех остльных случаях выводиться Тру, тоесть мы спим.             
+            if (Convert.ToBoolean(str[0]) == true && Convert.ToBoolean(str[1]) == false)
                 return false;
             else
                 return true;
@@ -276,15 +279,16 @@ namespace Tasks
 		All Correct
      */
 
+
         static bool Task3_1(string st)
         {
             string [] str = st.Split(' ');
-            bool a=false;           
+            //bool a=false;           
                 if (Convert.ToBoolean(str[2])==true||(str[0][0]!=str[1][0]))
                 {
-                    a = true;                    
+                   return true;                    
                 }                                    
-            return a;
+            return false;
         }
 
         /*   Given an int n, return true if it is within 10 of 100 or 200. Note: Math.abs(num) computes the absolute value of a number.
@@ -379,8 +383,10 @@ All Correct
 
         static bool Task3_4(string st)
         {
+            /* У нас проблемы если попугай говорит толко если это до 7 часов или после 20-ти. 
+             Во всех остальных случах нам всё равно говорит ли попугай или молчит.*/
             string[] str = st.Split(' ');
-            return ((20 < (Convert.ToInt32(str[1]))||(Convert.ToInt32(str[1]))<7)&&Convert.ToBoolean(str[0])==true);// У нас проблемы если попугай говорит толко если это до 7 часов или после 20-ти. во всех остальных случах нам всё равно говорит ли попугай или молчит.
+            return ((20 < (Convert.ToInt32(str[1])) || (Convert.ToInt32(str[1]))<7) && Convert.ToBoolean(str[0])==true);
         }
 
         /*
@@ -509,7 +515,7 @@ All Correct
         static bool Task4_3(string st)
         {
             string[] str = st.Split(' ');
-            return str[0].EndsWith("ix");// Метод который возравщает соответсвует ли конец строки указанному аргументу.
+            return str[0][1]=='i' && str[0][2]=='x';// Метод который возравщает соответсвует ли конец строки указанному аргументу.
         }
 
         /*
@@ -541,19 +547,14 @@ All Correct
         static int Task4_4(int[] mas)
         {
 
-            if (Math.Abs(10 - mas[0]) == Math.Abs(10 - mas[1]))  // Проверка на одинаковость разницы
-                return 0;
-            else
-            {
+            if (Math.Abs(mas[0]-10) == Math.Abs(mas[1] - 10))  // Проверка на одинаковость разницы
+                return 0;           
 
-                if (Math.Abs(10 - mas[0]) < Math.Abs(10 - mas[1])) // Возвращаем число чья абсолютная разность с 10-ю меньше. 
+                if (Math.Abs(mas[0] - 10) < Math.Abs(mas[1] - 10)) // Возвращаем число чья абсолютная разность с 10-ю меньше. 
 
                     return mas[0];
-
-                else
-
-                    return mas[1];
-            }
+               
+                    return mas[1];           
         }
 
 
@@ -580,17 +581,23 @@ All Correct
 
         static bool Task4_5(string st)
         {
+            int count = 0;
             bool a = false;
             char[] ch = st.ToCharArray();  // массив символов
-            for (int i = 0; i < 2; i++) // Ищем в заданном диапазоне есть ли символ "е" и в зависмости от наличия выдаем тру фолс.
+            for (int i = 0; i < ch.Length; i++) // Ищем в заданном диапазоне есть ли символ "е" и в зависмости от наличия выдаем тру фолс.
             {
                 if (ch[i] == 'e') 
                 {
-                    a = true;
-                    break;
+
+                    count++;
+                    
                 }
             }
-
+            if (count >= 1 && count <= 3)
+            {
+                a = true;
+                Console.WriteLine(count);
+            }
             return a;
         }
     }
