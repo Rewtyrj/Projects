@@ -8,7 +8,7 @@ namespace Tasks
 {
     class Program
     {
-        //Метод Task3_1 не праивльно рабьатает
+       
         // Реализовать импорт метода консоли и в целом
         static void Main(string[] args)
         {
@@ -26,7 +26,7 @@ namespace Tasks
             // Console.WriteLine(Task2_3(Console.ReadLine()));
             // Console.WriteLine(Task2_4(Console.ReadLine()));
             //  Console.WriteLine(Task2_5(Console.ReadLine()));
-            //Console.WriteLine(Task3_1(Console.ReadLine()));
+            Console.WriteLine(Task3_1(Console.ReadLine()));
            // Console.WriteLine(Task3_3(Input()));
            // Console.WriteLine(Task3_4(Console.ReadLine()));
           // Console.WriteLine(Task3_5(Convert.ToInt32(Console.ReadLine())));
@@ -35,7 +35,7 @@ namespace Tasks
             // Console.WriteLine(Task4_2(Input()));
            //  Console.WriteLine(Task4_3(Console.ReadLine()));
             // Console.WriteLine(Task4_4(Input()));
-            Console.WriteLine(Task4_5(Console.ReadLine()));
+            //Console.WriteLine(Task4_5(Console.ReadLine()));
         }
 
        static int[]Input()
@@ -282,9 +282,8 @@ namespace Tasks
 
         static bool Task3_1(string st)
         {
-            string [] str = st.Split(' ');
-            //bool a=false;           
-                if (Convert.ToBoolean(str[2])==true||(str[0][0]!=str[1][0]))
+            string [] str = st.Split(' ');                    
+                if ((Convert.ToBoolean(str[2])==true && (str[0][0]=='-' && str[1][0] == '-'))|| (str[0][0]!=str[1][0]))
                 {
                    return true;                    
                 }                                    
