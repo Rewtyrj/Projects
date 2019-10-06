@@ -28,7 +28,12 @@ namespace Tasks
             //Console.WriteLine(Task3_3(Input()));
             //Console.WriteLine(Task3_4(Console.ReadLine()));
             //Console.WriteLine(Task3_5(Convert.ToInt32(Console.ReadLine())));
-            Console.WriteLine(Task3_2(Convert.ToInt32(Console.ReadLine())));
+            // Console.WriteLine(Task3_2(Convert.ToInt32(Console.ReadLine())));
+            // Console.WriteLine(Task4_1(Console.ReadLine()));
+            // Console.WriteLine(Task4_2(Input()));
+            // Console.WriteLine(Task4_3(Console.ReadLine()));
+            // Console.WriteLine(Task4_4(Input()));
+            Console.WriteLine(Task4_5(Console.ReadLine()));
         }
 
        static int[]Input()
@@ -410,6 +415,183 @@ All Correct
             return Math.Abs(21-x);// Функция абс приводит значение к целому не отрицательному.
         }
 
+        /*
+    Warmup-1 > missingChar
+	
+	Given a non-empty string and an int n, return a new string where the char at index n has been removed. The value of n will be a valid index of a char in the original string (i.e. n will be in the range 0..str.length()-1 inclusive).
+	
+	
+	missingChar("kitten", 1) → "ktten"
+	missingChar("kitten", 0) → "itten"
+	missingChar("kitten", 4) → "kittn"
+	
+	Expected	Run
+	missingChar("kitten", 1) → "ktten"	"ktten"	OK
+	missingChar("kitten", 0) → "itten"	"itten"	OK
+	missingChar("kitten", 4) → "kittn"	"kittn"	OK
+	missingChar("Hi", 0) → "i"	"i"	OK
+	missingChar("Hi", 1) → "H"	"H"	OK
+	missingChar("code", 0) → "ode"	"ode"	OK
+	missingChar("code", 1) → "cde"	"cde"	OK
+	missingChar("code", 2) → "coe"	"coe"	OK
+	missingChar("code", 3) → "cod"	"cod"	OK
+	missingChar("chocolate", 8) → "chocolat"	"chocolat"	OK
 
+All Correct
+*/
+
+        static string Task4_1(string st)
+        {
+            string[] str = st.Split(' ');
+            return str[0].Remove(Convert.ToInt32(str[1]), 1);// метод ремув удаляет количество символво начная с указаного в пермов аргументе. Можно реализовать перезаписью массива чар с пропуском указаного элемента.
+
+        }
+
+
+        /*
+    Warmup-1 > hasTeen
+
+	We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 3 int values, return true if 1 or more of them are teen.
+	
+	
+	hasTeen(13, 20, 10) → true
+	hasTeen(20, 19, 10) → true
+	hasTeen(20, 10, 13) → true
+	
+	Expected	Run
+	hasTeen(13, 20, 10) → true	true	OK
+	hasTeen(20, 19, 10) → true	true	OK
+	hasTeen(20, 10, 13) → true	true	OK
+	hasTeen(1, 20, 12) → false	false	OK
+	hasTeen(19, 20, 12) → true	true	OK
+	hasTeen(12, 20, 19) → true	true	OK
+	hasTeen(12, 9, 20) → false	false	OK
+	hasTeen(12, 18, 20) → true	true	OK
+	hasTeen(14, 2, 20) → true	true	OK
+	hasTeen(4, 2, 20) → false	false	OK
+	hasTeen(11, 22, 22) → false	false	OK
+	
+	All Correct
+*/
+
+        static bool Task4_2(int [] mas)
+        {
+            bool a= false;
+            foreach (int x in mas)
+            {
+                if (13 <= x && x <= 19)
+                     a= true;
+            }
+            return a;
+        }
+
+        /*
+    Warmup-1 > mixStart
+	
+	Return true if the given string begins with "mix", except the 'm' can be anything, so "pix", "9ix" .. all count.
+	
+	
+	mixStart("mix snacks") → true
+	mixStart("pix snacks") → true
+	mixStart("piz snacks") → false
+	Expected	Run
+	mixStart("mix snacks") → true	true	OK
+	mixStart("pix snacks") → true	true	OK
+	mixStart("piz snacks") → false	false	OK
+	mixStart("nix") → true	true	OK
+	mixStart("ni") → false	false	OK
+	mixStart("n") → false	false	OK
+	mixStart("") → false	false	OK
+
+All Correct
+*/
+
+        static bool Task4_3(string st)
+        {
+            string[] str = st.Split(' ');
+            return str[0].EndsWith("ix");// Метод который возравщает соответсвует ли конец строки указанному аргументу.
+        }
+
+        /*
+    Warmup-1 > close10
+
+	Given 2 int values, return whichever value is nearest to the value 10, or return 0 in the event of a tie. Note that Math.abs(n) returns the absolute value of a number.
+	
+	
+	close10(8, 13) → 8
+	close10(13, 8) → 8
+	close10(13, 7) → 0
+	
+	Expected	Run
+	close10(8, 13) → 8	8	OK
+	close10(13, 8) → 8	8	OK
+	close10(13, 7) → 0	0	OK
+	close10(7, 13) → 0	0	OK
+	close10(9, 13) → 9	9	OK
+	close10(13, 8) → 8	8	OK
+	close10(10, 12) → 10	10	OK
+	close10(11, 10) → 10	10	OK
+	close10(5, 21) → 5	5	OK
+	close10(0, 20) → 0	0	OK
+	close10(10, 10) → 0	0	OK
+	
+	All Correct
+*/
+
+        static int Task4_4(int[] mas)
+        {
+
+            if (Math.Abs(10 - mas[0]) == Math.Abs(10 - mas[1]))  // Проверка на одинаковость разницы
+                return 0;
+            else
+            {
+
+                if (Math.Abs(10 - mas[0]) < Math.Abs(10 - mas[1])) // Возвращаем число чья абсолютная разность с 10-ю меньше. 
+
+                    return mas[0];
+
+                else
+
+                    return mas[1];
+            }
+        }
+
+
+        /*
+         armup-1 > stringE
+
+	Return true if the given string contains between 1 and 3 'e' chars.
+	
+	
+	stringE("Hello") → true
+	stringE("Heelle") → true
+	stringE("Heelele") → false
+	
+	Expected	Run
+	stringE("Hello") → true	true	OK
+	stringE("Heelle") → true	true	OK
+	stringE("Heelele") → false	false	OK
+	stringE("Hll") → false	false	OK
+	stringE("e") → true	true	OK
+	stringE("") → false	false	OK
+
+All Correct
+*/
+
+        static bool Task4_5(string st)
+        {
+            bool a = false;
+            char[] ch = st.ToCharArray();  // массив символов
+            for (int i = 0; i < 2; i++) // Ищем в заданном диапазоне есть ли символ "е" и в зависмости от наличия выдаем тру фолс.
+            {
+                if (ch[i] == 'e') 
+                {
+                    a = true;
+                    break;
+                }
+            }
+
+            return a;
+        }
     }
 }
