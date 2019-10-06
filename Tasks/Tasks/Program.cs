@@ -22,8 +22,9 @@ namespace Tasks
             //  Console.WriteLine(Task2_2(Convert.ToInt32(Console.ReadLine())));
             // Console.WriteLine(Task2_3(Console.ReadLine()));
             // Console.WriteLine(Task2_3(Console.ReadLine()));
-            Console.WriteLine(Task2_4(Console.ReadLine()));
-
+            // Console.WriteLine(Task2_4(Console.ReadLine()));
+            Console.WriteLine(Task2_5(Console.ReadLine()));
+            
 
         }
 
@@ -223,6 +224,14 @@ namespace Tasks
    All Correct
     */
 
-      
+      static bool Task2_5(string st) 
+        { 
+            string [] str = st.Split(' ');            
+            if (Convert.ToBoolean(str[0]) == true && Convert.ToBoolean(str[1]) == false)// Мы не спим только в том случае если будний день и если это не отпуск. Соответвенно во всех остльных случаях выводиться Тру, тоесть мы спим. 
+                return false;
+            else
+                return true;
+        }
+        
     }
 }
