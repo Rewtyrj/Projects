@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace Tasks
 {
     class Program
     {
-       
+
         // Реализовать импорт метода консоли и в целом
         static void Main(string[] args)
         {
@@ -26,59 +27,63 @@ namespace Tasks
             // Console.WriteLine(Task2_3(Console.ReadLine()));
             // Console.WriteLine(Task2_4(Console.ReadLine()));
             //  Console.WriteLine(Task2_5(Console.ReadLine()));
-            Console.WriteLine(Task3_1(Console.ReadLine()));
-           // Console.WriteLine(Task3_3(Input()));
-           // Console.WriteLine(Task3_4(Console.ReadLine()));
-          // Console.WriteLine(Task3_5(Convert.ToInt32(Console.ReadLine())));
+            // WriteLine(Task3_1(ReadLine()));
+            // Console.WriteLine(Task3_3(Input()));
+            // Console.WriteLine(Task3_4(Console.ReadLine()));
+            // Console.WriteLine(Task3_5(Convert.ToInt32(Console.ReadLine())));
             // Console.WriteLine(Task3_2(Convert.ToInt32(Console.ReadLine())));
             // Console.WriteLine(Task4_1(Console.ReadLine()));
             // Console.WriteLine(Task4_2(Input()));
-           //  Console.WriteLine(Task4_3(Console.ReadLine()));
+            //  Console.WriteLine(Task4_3(Console.ReadLine()));
             // Console.WriteLine(Task4_4(Input()));
             //Console.WriteLine(Task4_5(Console.ReadLine()));
+            //WriteLine(Task5_1(ReadLine()));
+            //WriteLine(Task5_3(ReadLine()));
+            //WriteLine(Task5_4(Input()));
+            WriteLine(Task5_5(ReadLine()));
         }
 
-       static int[]Input()
+        static int[] Input()
         {
-            
-            Console.WriteLine("Enter input data"); 
+
+            Console.WriteLine("Enter input data");
             string input = Console.ReadLine();
-            string [] str = input.Split(' ');
-            int[] mas = new int [str.Length];
-            
-                for(int i=0;i<str.Length; i++)
-                {
-                    mas[i] = Convert.ToInt32(str[i]);
-                }           
+            string[] str = input.Split(' ');
+            int[] mas = new int[str.Length];
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                mas[i] = Convert.ToInt32(str[i]);
+            }
             return mas;
-        }  
+        }
         static void Enia_195(int[] mas)
         {
             int rez = mas[1] * mas[2] * mas[0] * 2;
-           Console.WriteLine("Необходимо "+rez+" нанограмм");
+            Console.WriteLine("Необходимо " + rez + " нанограмм");
         }
 
         static void Guliver_773(int[] mas)
         {
-            int rez = mas[0]^2 * mas[1];
+            int rez = mas[0] ^ 2 * mas[1];
             Console.WriteLine("Необходимо " + rez + " матрасов");
         }
 
         static void Tel_108(int[] mas)
         {
-            Console.WriteLine("Конечная цифра: "+mas[0]);
+            Console.WriteLine("Конечная цифра: " + mas[0]);
         }
 
         static void Game_004(int[] mas)
         {
             string rez = mas[0] + "9" + (9 - mas[0]);
-            Console.WriteLine("Отгаданное число: "+rez);
+            Console.WriteLine("Отгаданное число: " + rez);
         }
 
         static void Biser_903(int[] mas)
         {
-            
-            Console.WriteLine("Необходимо вытащить "+(mas[0] + 1)+" бусин");
+
+            Console.WriteLine("Необходимо вытащить " + (mas[0] + 1) + " бусин");
         }
 
         /*
@@ -102,10 +107,10 @@ namespace Tasks
 
             All Correct
          */
-        static string  Task2_1(string st)
+        static string Task2_1(string st)
         {
-            return st[st.Length-1] + st + st[st.Length-1];
-            
+            return st[st.Length - 1] + st + st[st.Length - 1];
+
         }
 
         /*
@@ -143,7 +148,7 @@ namespace Tasks
 
         All Correct
      */
-        
+
         static bool Task2_2(int x)
         {
             bool a = (x % 5 == 0 || x % 3 == 0); // Присваиваем булевой переменной значение сравнения остатка от деления с "0" используя лолическое "или" для двух условий.
@@ -175,42 +180,42 @@ namespace Tasks
 
         static string Task2_3(string st)
         {
-            string  st1="";// Обьявляем переменнуы для записи первых двух(или сколько угодно букв/ символов строки)
+            string st1 = "";// Обьявляем переменнуы для записи первых двух(или сколько угодно букв/ символов строки)
             for (int i = 0; i < 2; i++)// Заполняем переменную st1
             {
                 st1 = st1 + Convert.ToString(st[i]);
             }
 
-            return st1+st+st1;
+            return st1 + st + st1;
         }
 
-         /*
-            Given a string, return true if the string starts with "hi"
-            and false otherwise.
+        /*
+           Given a string, return true if the string starts with "hi"
+           and false otherwise.
 
 
-        startHi("hi there") → true
-        startHi("hi") → true
-        startHi("hello hi") → false
+       startHi("hi there") → true
+       startHi("hi") → true
+       startHi("hello hi") → false
 
-        Expected	Run
-        startHi("hi there") → true	true	OK
-        startHi("hi") → true	true	OK
-        startHi("hello hi") → false	false	OK
-        startHi("he") → false	false	OK
-        startHi("h") → false	false	OK
-        startHi("") → false	false	OK
-        startHi("ho hi") → false	false	OK
-        startHi("hi ho") → true	true	OK
+       Expected	Run
+       startHi("hi there") → true	true	OK
+       startHi("hi") → true	true	OK
+       startHi("hello hi") → false	false	OK
+       startHi("he") → false	false	OK
+       startHi("h") → false	false	OK
+       startHi("") → false	false	OK
+       startHi("ho hi") → false	false	OK
+       startHi("hi ho") → true	true	OK
 
-        All Correct */
+       All Correct */
 
         static bool Task2_4(string st)
         {
-            string substr="";
-            substr = st[0] +""+ st[1];// создаем подстроку из из строки для сравнения. 
+            string substr = "";
+            substr = st[0] + "" + st[1];// создаем подстроку из из строки для сравнения. 
             //bool a = st.StartsWith(substr); // Использованеи встроенного метода который определяет начинаеться ли строка с определенной подстроки
-            bool a = substr == "hi";  
+            bool a = substr == "hi";
             return a;
         }
 
@@ -234,9 +239,9 @@ namespace Tasks
    All Correct
     */
 
-      static bool Task2_5(string st) 
-        { 
-            string [] str = st.Split(' ');
+        static bool Task2_5(string st)
+        {
+            string[] str = st.Split(' ');
             // Мы не спим только в том случае если будний день и если это не отпуск. Соответвенно во всех остльных случаях выводиться Тру, тоесть мы спим.             
             if (Convert.ToBoolean(str[0]) == true && Convert.ToBoolean(str[1]) == false)
                 return false;
@@ -282,11 +287,11 @@ namespace Tasks
 
         static bool Task3_1(string st)
         {
-            string [] str = st.Split(' ');                    
-                if ((Convert.ToBoolean(str[2])==true && (str[0][0]=='-' && str[1][0] == '-'))|| (str[0][0]!=str[1][0]))
-                {
-                   return true;                    
-                }                                    
+            string[] str = st.Split(' ');
+            if ((Convert.ToBoolean(str[2]) == true && (str[0][0] == '-' && str[1][0] == '-')) || (str[0][0] != str[1][0]))
+            {
+                return true;
+            }
             return false;
         }
 
@@ -324,7 +329,7 @@ namespace Tasks
 
         static bool Task3_2(int x)
         {
-            return ((Math.Abs(100-x)<=10) || (Math.Abs(200 - x) <= 10));
+            return ((Math.Abs(100 - x) <= 10) || (Math.Abs(200 - x) <= 10));
         }
         /*
     Warmup-1 > makes10
@@ -352,7 +357,7 @@ All Correct
 
         static bool Task3_3(int[] mas)
         {
-            return (mas[0] + mas[1] == 10||mas[0]==10||mas[1]==10);              
+            return (mas[0] + mas[1] == 10 || mas[0] == 10 || mas[1] == 10);
         }
 
         /*
@@ -385,7 +390,7 @@ All Correct
             /* У нас проблемы если попугай говорит толко если это до 7 часов или после 20-ти. 
              Во всех остальных случах нам всё равно говорит ли попугай или молчит.*/
             string[] str = st.Split(' ');
-            return ((20 < (Convert.ToInt32(str[1])) || (Convert.ToInt32(str[1]))<7) && Convert.ToBoolean(str[0])==true);
+            return ((20 < (Convert.ToInt32(str[1])) || (Convert.ToInt32(str[1])) < 7) && Convert.ToBoolean(str[0]) == true);
         }
 
         /*
@@ -417,7 +422,7 @@ All Correct
 
         static int Task3_5(int x)
         {
-            return Math.Abs(21-x);// Функция абс приводит значение к целому не отрицательному.
+            return Math.Abs(21 - x);// Функция абс приводит значение к целому не отрицательному.
         }
 
         /*
@@ -479,13 +484,13 @@ All Correct
 	All Correct
 */
 
-        static bool Task4_2(int [] mas)
+        static bool Task4_2(int[] mas)
         {
-            bool a= false;
+            bool a = false;
             foreach (int x in mas)
             {
                 if (13 <= x && x <= 19)
-                     a= true;
+                    a = true;
             }
             return a;
         }
@@ -514,7 +519,7 @@ All Correct
         static bool Task4_3(string st)
         {
             string[] str = st.Split(' ');
-            return str[0][1]=='i' && str[0][2]=='x';// Метод который возравщает соответсвует ли конец строки указанному аргументу.
+            return str[0][1] == 'i' && str[0][2] == 'x';// Метод который возравщает соответсвует ли конец строки указанному аргументу.
         }
 
         /*
@@ -546,14 +551,14 @@ All Correct
         static int Task4_4(int[] mas)
         {
 
-            if (Math.Abs(mas[0]-10) == Math.Abs(mas[1] - 10))  // Проверка на одинаковость разницы
-                return 0;           
+            if (Math.Abs(mas[0] - 10) == Math.Abs(mas[1] - 10))  // Проверка на одинаковость разницы
+                return 0;
 
-                if (Math.Abs(mas[0] - 10) < Math.Abs(mas[1] - 10)) // Возвращаем число чья абсолютная разность с 10-ю меньше. 
+            if (Math.Abs(mas[0] - 10) < Math.Abs(mas[1] - 10)) // Возвращаем число чья абсолютная разность с 10-ю меньше. 
 
-                    return mas[0];
-               
-                    return mas[1];           
+                return mas[0];
+
+            return mas[1];
         }
 
 
@@ -585,11 +590,11 @@ All Correct
             char[] ch = st.ToCharArray();  // массив символов
             for (int i = 0; i < ch.Length; i++) // Ищем в заданном диапазоне есть ли символ "е" и в зависмости от наличия выдаем тру фолс.
             {
-                if (ch[i] == 'e') 
+                if (ch[i] == 'e')
                 {
 
                     count++;
-                    
+
                 }
             }
             if (count >= 1 && count <= 3)
@@ -598,6 +603,235 @@ All Correct
                 Console.WriteLine(count);
             }
             return a;
+        }
+
+
+        /*
+    Warmup-1 > everyNth
+prev  |  next  |  chance
+Given a non-empty string and an int N, return the string made starting with char 0, and then every Nth char of the string. 
+So if N is 3, use char 0, 3, 6, ... and so on. N is 1 or more.
+
+
+everyNth("Miracle", 2) → "Mrce"
+everyNth("abcdefg", 2) → "aceg"
+everyNth("abcdefg", 3) → "adg"
+
+   Expected	Run
+everyNth("Miracle", 2) → "Mrce"	"Mrce"	OK
+everyNth("abcdefg", 2) → "aceg"	"aceg"	OK
+everyNth("abcdefg", 3) → "adg"	"adg"	OK
+everyNth("Chocolate", 3) → "Cca"	"Cca"	OK
+everyNth("Chocolates", 3) → "Ccas"	"Ccas"	OK
+everyNth("Chocolates", 4) → "Coe"	"Coe"	OK
+everyNth("Chocolates", 100) → "C"	"C"	OK
+
+All Correct
+
+     */
+
+        static string Task5_1(string input)
+        {
+            //Разбиваем на подстроки входную строку на две подстроки, на обробатываемую строку и индекс.
+            string[] subinput = input.Split('/');
+            // Индекс конвертируем в инт.
+            int index = Convert.ToInt32(subinput[1]);
+            // Делаем запись в теле "Do" и последующую дозапись каждого кратного индексу
+            //символа до конца обрабатываеимой строки.  
+            string output = "";
+            int i = 0;
+            do
+            {
+                if (i % index == 0)
+                {
+                    output = output + subinput[0][i];
+                }
+                i++;
+            }
+            while (i < subinput[0].Length);
+            // Возвращаем выходную строку.
+            return output;
+        }
+
+
+        /*
+    Warmup-1 > monkeyTrouble
+prev  |  next  |  chance
+We have two monkeys, a and b, and the parameters aSmile and bSmile indicate if each is smiling. We are in trouble if they are both smiling or if neither of them is smiling. Return true if we are in trouble.
+
+
+monkeyTrouble(true, true) → true
+monkeyTrouble(false, false) → true
+monkeyTrouble(true, false) → false
+
+Expected	Run
+monkeyTrouble(true, true) → true	true	OK
+monkeyTrouble(false, false) → true	true	OK
+monkeyTrouble(true, false) → false	false	OK
+monkeyTrouble(false, true) → false	false	OK
+
+All Correct
+     */
+
+        static bool Task5_2(string str)
+        {
+            string[] substring = str.Split(' ');
+            // Создаем булевый массив для хранения параметров считанных и переформатированных в тип бул что бы не быть зависимым
+            // от регистра при сравненнии.
+            bool[] parameter = new bool[substring.Length];
+            int i = 0;
+            foreach (string s in substring)
+            {
+                parameter[i] = Convert.ToBoolean(s);
+                i++;
+            }
+            // Так как у нас проблемы только при одинаковых параметрах то выдаем тру(есть проблемы) при одинаковых параметрах.
+            return parameter[0] == parameter[1];
+        }
+
+        /*
+===================================================================
+3333333333333333333333333333333333333333333333333333333333333333333
+=================================================================== 
+Given a string, return a new string where the first and last chars have been exchanged.
+
+
+frontBack("code") → "eodc"
+frontBack("a") → "a"
+frontBack("ab") → "ba"
+
+Expected	Run		
+frontBack("code") → "eodc"	"eodc"	OK	
+frontBack("a") → "a"	"a"	OK	
+frontBack("ab") → "ba"	"ba"	OK	
+frontBack("abc") → "cba"	"cba"	OK	
+frontBack("") → ""	""	OK	
+frontBack("Chocolate") → "ehocolatC"	"ehocolatC"	OK	
+frontBack("aavJ") → "Java"	"Java"	OK	
+frontBack("hello") → "oellh"	"oellh"	OK	
+
+All Correct
+ */
+
+        static string Task5_3(string str)
+        {
+            // Создаём переменную для временного хранения символов при перестановке.
+            char ch;
+            // Строка в которую запишем массив чар для вывода.
+            string str1 = "";
+            // Преобразуем строку в массив символов и по принципу пузырьковой сортировки меняем сиволы местами.
+            char[] st = str.ToCharArray();
+            ch = st[0];
+            st[0] = st[st.Length - 1];
+            st[st.Length - 1] = ch;
+            // с помошью цикла записываем массив символов в строку
+            foreach (char a in st)
+            {
+                str1 = str1 + a;
+            }
+            return str1;
+        }
+
+        /*
+    Warmup-1 > loneTeen
+prev  |  next  |  chance
+We'll say that a number is "teen" if it is in the range 13..19 inclusive. Given 2 int values, return true if one or the other is teen, but not both.
+
+
+loneTeen(13, 99) → true
+loneTeen(21, 19) → true
+loneTeen(13, 13) → false
+
+Expected	Run
+loneTeen(13, 99) → true	true	OK
+loneTeen(21, 19) → true	true	OK
+loneTeen(13, 13) → false	false	OK
+loneTeen(14, 20) → true	true	OK
+loneTeen(20, 15) → true	true	OK
+loneTeen(16, 17) → false	false	OK
+loneTeen(16, 9) → true	true	OK
+loneTeen(16, 18) → false	false	OK
+loneTeen(13, 19) → false	false	OK
+loneTeen(13, 20) → true	true	OK
+loneTeen(6, 18) → true	true	OK
+loneTeen(99, 13) → true	true	OK
+loneTeen(99, 99) → false	false	OK
+
+All Correct
+     */
+
+        static bool Task5_4(int[] mas)
+        {    
+            //Две счётчика.
+            int a = 0;
+            int b = 0;
+            // С помошью цикла проходимся по массиву и если число соответсвует параметрам, то счётчик увеличивается.
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if ((mas[i] <= 19 && mas[i] >= 13))
+                {
+                    a++;
+                }
+                if ((mas[i] > 19 || mas[i] < 13))
+                {
+                    b++;
+                }
+            }
+            // Если счётчик показал что оба числа не входят в один диапазон, то программа возращает тру, иначе фолс. 
+            if ((a != 2)&&( b!=2))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+        /*
+    Warmup-1 > startOz
+Given a string, return a string made of the first 2 chars (if present), however include first char only if it is 'o' and include the second only if it is 'z', so "ozymandias" yields "oz".
+
+
+startOz("ozymandias") → "oz"
+startOz("bzoo") → "z"
+startOz("oxx") → "o
+
+Expected	Run
+startOz("ozymandias") → "oz"	"oz"	OK
+startOz("bzoo") → "z"	"z"	OK
+startOz("oxx") → "o"	"o"	OK
+startOz("oz") → "oz"	"oz"	OK
+startOz("ounce") → "o"	"o"	OK
+startOz("o") → "o"	"o"	OK
+startOz("abc") → ""	""	OK
+startOz("") → ""	""	OK
+startOz("zoo") → ""	""	OK
+startOz("aztec") → "z"	"z"	OK
+startOz("zzzz") → "z"	"z"	OK
+startOz("oznic") → "oz"	"oz"	OK
+
+All Correct
+     */
+
+        static string Task5_5(string str)
+        {
+            // массив чар, который служит шаблоном.
+            char[] dict = { 'o', 'z' };
+            // Выходная строка
+            string strout = "";
+            // Сверяем символы входной строкой с шаблоном пока не сравняться первые два символа. Если символ совпадает,
+            // то записывается в выходную строку.
+            for (int i = 0; i < str.Length; i++)
+            {               
+                    if (str[i] == dict[i])
+                        strout = strout + str[i];
+                if (i == 1)
+                    break;       
+            }
+
+            return strout;
         }
     }
 }
