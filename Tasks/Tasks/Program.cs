@@ -9,7 +9,7 @@ namespace Tasks
 {
     class Program
     {
-
+        // Task 5_4 поиграться с логичесикми операциясм, исключающее или.
         // Реализовать импорт метода консоли и в целом
         static void Main(string[] args)
         {
@@ -38,9 +38,10 @@ namespace Tasks
             // Console.WriteLine(Task4_4(Input()));
             //Console.WriteLine(Task4_5(Console.ReadLine()));
             //WriteLine(Task5_1(ReadLine()));
-            //WriteLine(Task5_3(ReadLine()));
-            //WriteLine(Task5_4(Input()));
-            WriteLine(Task5_5(ReadLine()));
+            // WriteLine(Task5_2(ReadLine()));
+             // WriteLine(Task5_3(ReadLine()));
+            // WriteLine(Task5_4(Input()));
+             //WriteLine(Task5_5(ReadLine()));
         }
 
         static int[] Input()
@@ -644,7 +645,7 @@ All Correct
             {
                 if (i % index == 0)
                 {
-                    output = output + subinput[0][i];
+                    output += subinput[0][i];
                 }
                 i++;
             }
@@ -718,18 +719,19 @@ All Correct
             // Создаём переменную для временного хранения символов при перестановке.
             char ch;
             // Строка в которую запишем массив чар для вывода.
-            string str1 = "";
             // Преобразуем строку в массив символов и по принципу пузырьковой сортировки меняем сиволы местами.
             char[] st = str.ToCharArray();
             ch = st[0];
             st[0] = st[st.Length - 1];
             st[st.Length - 1] = ch;
             // с помошью цикла записываем массив символов в строку
-            foreach (char a in st)
+            /*foreach (char a in st)
             {
                 str1 = str1 + a;
             }
-            return str1;
+            */
+
+            return  new string(st);
         }
 
         /*
@@ -762,7 +764,7 @@ All Correct
 
         static bool Task5_4(int[] mas)
         {    
-            //Две счётчика.
+            //Двa счётчика.
             int a = 0;
             int b = 0;
             // С помошью цикла проходимся по массиву и если число соответсвует параметрам, то счётчик увеличивается.
