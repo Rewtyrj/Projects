@@ -10,7 +10,7 @@ namespace Tasks
     class Program
     {
         // Task 5_4 поиграться с логичесикми операциясм, исключающее или.
-        // Реализовать импорт метода консоли и в целом
+      
         static void Main(string[] args)
         {
 
@@ -39,9 +39,14 @@ namespace Tasks
             //Console.WriteLine(Task4_5(Console.ReadLine()));
             //WriteLine(Task5_1(ReadLine()));
             // WriteLine(Task5_2(ReadLine()));
-             // WriteLine(Task5_3(ReadLine()));
+            // WriteLine(Task5_3(ReadLine()));
             // WriteLine(Task5_4(Input()));
-             //WriteLine(Task5_5(ReadLine()));
+            //WriteLine(Task5_5(ReadLine()));
+            //WriteLine(Task6_1(Input()));
+            //WriteLine(Task6_2(Input()));
+            // WriteLine(Task6_3(Input()));
+            //WriteLine(Task6_4(ReadLine()));
+            WriteLine(Task6_5(ReadLine()));
         }
 
         static int[] Input()
@@ -835,5 +840,171 @@ All Correct
 
             return strout;
         }
+
+        /*
+    Warmup-1 > in3050
+	
+	Given 2 int values, return true if they are both in the range 30..40 inclusive, or they are both in the range 40..50 inclusive.
+	
+	
+	in3050(30, 31) → true
+	in3050(30, 41) → false
+	in3050(40, 50) → true
+	Expected	Run
+	in3050(30, 31) → true	true	OK
+	in3050(30, 41) → false	false	OK
+	in3050(40, 50) → true	true	OK
+	in3050(40, 51) → false	false	OK
+	in3050(39, 50) → false	false	OK
+	in3050(50, 39) → false	false	OK
+	in3050(40, 39) → true	true	OK
+	in3050(49, 48) → true	true	OK
+	in3050(50, 40) → true	true	OK
+	in3050(50, 51) → false	false	OK
+	in3050(35, 36) → true	true	OK
+	in3050(35, 45) → false	false	OK
+
+All Correct
+*/
+
+        static bool Task6_1(int[] mas)
+        {
+            // Если оба числа в заданном диапазоне то возвращаем тру 
+            if (30 <= mas[0] & mas[0] <= 40 && 30 <= mas[1] & mas[1] <= 40)
+                return true;
+            if (40 <= mas[0] & mas[0] <= 50 && 40 <= mas[1] & mas[1] <= 50)
+                return true;
+            // Если ни одно из условий не удовлетворяется, то возвращаем фолс.
+            return false;
+        }
+
+
+        /*
+    Warmup-1 > lastDigit
+    Given two non-negative int values, return true if they have the same last digit, such as with 27 and 57. Note that the % "mod" operator computes remainders, so 17 % 10 is 7.
+	
+	
+	lastDigit(7, 17) → true
+	lastDigit(6, 17) → false
+	lastDigit(3, 113) → true
+	
+	Expected	Run
+	lastDigit(7, 17) → true	true	OK
+	lastDigit(6, 17) → false	false	OK
+	lastDigit(3, 113) → true	true	OK
+	lastDigit(114, 113) → false	false	OK
+	lastDigit(114, 4) → true	true	OK
+	lastDigit(10, 0) → true	true	OK
+	lastDigit(11, 0) → false	false	OK
+
+All Correct
+*/
+
+        static bool Task6_2(int[] mas)
+        {
+            // При получении остаттка от деления на 10 получаем последнюю цифру числа. Возвращаем результат сравнения двух последний цифр.
+            return mas[0] % 10 == mas[1] % 10;
+        }
+
+        /*
+	Warmup-1 > sumDouble
+	Given two int values, return their sum. Unless the two values are the same, then return double their sum.
+	
+	
+	sumDouble(1, 2) → 3
+	sumDouble(3, 2) → 5
+	sumDouble(2, 2) → 8
+	
+	Expected	Run
+	sumDouble(1, 2) → 3	3	OK
+	sumDouble(3, 2) → 5	5	OK
+	sumDouble(2, 2) → 8	8	OK
+	sumDouble(-1, 0) → -1	-1	OK
+	sumDouble(3, 3) → 12	12	OK
+	sumDouble(0, 0) → 0	0	OK
+	sumDouble(0, 1) → 1	1	OK
+	sumDouble(3, 4) → 7	7	OK
+
+All Correct
+*/
+
+        static int Task6_3(int[] mas)
+        {
+            //Если удовлетворяется условие, что числа одинаковы, то возвращаем двойную суму чисел. Если нет, то возращвем просто сумму.
+            if (mas[0] == mas[1])
+                return (mas[0] + mas[1]) * 2;
+            return mas[0] + mas[1];
+            
+        }
+
+        /*
+	Warmup-1 > notString
+	
+	Given a string, return a new string where "not " has been added to the front. However, if the string already begins with "not", return the string unchanged. Note: use .equals() to compare 2 strings.
+	
+	
+	notString("candy") → "not candy"
+	notString("x") → "not x"
+	notString("not bad") → "not bad"
+	
+	Expected	Run
+	notString("candy") → "not candy"	"not candy"	OK
+	notString("x") → "not x"	"not x"	OK
+	notString("not bad") → "not bad"	"not bad"	OK
+	notString("bad") → "not bad"	"not bad"	OK
+	notString("not") → "not"	"not"	OK
+	notString("is not") → "not is not"	"not is not"	OK
+	notString("no") → "not no"	"not no"	OK
+	
+All Correc
+*/
+
+        static string Task6_4(string str)
+        {
+            // С помошью метода StartsWith() узнаем начинается ли строка с заданной в методе. Если нет, то приписываем к строке в начало "not".
+            // Если условие не удовлетворяется, возвращаем ту же строку.
+            if (!str.StartsWith("not"))
+                return "not " + str;
+            return str;
+
+        }
+
+        /*
+    Warmup-1 > front3
+
+	Given a string, we'll say that the front is the first 3 chars of the string. If the string length is less than 3, the front is whatever is there. Return a new string which is 3 copies of the front.
+	
+	
+	front3("Java") → "JavJavJav"
+	front3("Chocolate") → "ChoChoCho"
+	front3("abc") → "abcabcabc"
+	
+	Expected	Run
+	front3("Java") → "JavJavJav"	"JavJavJav"	OK
+	front3("Chocolate") → "ChoChoCho"	"ChoChoCho"	OK
+	front3("abc") → "abcabcabc"	"abcabcabc"	OK
+	front3("abcXYZ") → "abcabcabc"	"abcabcabc"	OK
+	front3("ab") → "ababab"	"ababab"	OK
+	front3("a") → "aaa"	"aaa"	OK
+	front3("") → ""	""	OK
+
+All Correct
+*/
+
+        static string Task6_5(string str)
+        {
+            string strout="";
+            //Если строка длиннее 3-х символов, то удаляем все символы кроме первых трёх. 
+            if (str.Length > 3)                
+            str = str.Remove(3, str.Length-3);
+            // После преобразования длинной строки или исходной но короткой запиываем её три раза в выходную строку.
+            for (int i = 0; i < 3; i++)
+            {
+                
+               strout += str;
+            }
+            return strout;
+        }
+            
     }
 }
