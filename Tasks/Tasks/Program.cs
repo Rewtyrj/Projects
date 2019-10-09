@@ -46,7 +46,12 @@ namespace Tasks
             //WriteLine(Task6_2(Input()));
             // WriteLine(Task6_3(Input()));
             //WriteLine(Task6_4(ReadLine()));
-            WriteLine(Task6_5(ReadLine()));
+            // WriteLine(Task6_5(ReadLine()));
+            //WriteLine(Task7_1(Input()));
+            //WriteLine(Task7_2(ReadLine()));
+            //WriteLine(Task7_3(Input()));
+            //WriteLine(Task7_4(Input()));
+            WriteLine(Task7_5(ReadLine()));
         }
 
         static int[] Input()
@@ -997,6 +1002,7 @@ All Correct
             //Если строка длиннее 3-х символов, то удаляем все символы кроме первых трёх. 
             if (str.Length > 3)                
             str = str.Remove(3, str.Length-3);
+           
             // После преобразования длинной строки или исходной но короткой запиываем её три раза в выходную строку.
             for (int i = 0; i < 3; i++)
             {
@@ -1005,6 +1011,182 @@ All Correct
             }
             return strout;
         }
+
+        /*
+Warmup-1 > in1020
+prev  |  next  |  chance
+Given 2 int values, return true if either of them is in the range 10..20 inclusive.
+
+
+in1020(12, 99) → true
+in1020(21, 12) → true
+in1020(8, 99) → false
+
+    Expected	Run
+in1020(12, 99) → true	true	OK
+in1020(21, 12) → true	true	OK
+in1020(8, 99) → false	false	OK
+in1020(99, 10) → true	true	OK
+in1020(20, 20) → true	true	OK
+in1020(21, 21) → false	false	OK
+in1020(9, 9) → false	false	OK
+
+All Correct
+     */
+
+        static bool Task7_1(int[] mas)
+        {
+            // Оператор условного логического и возвращает тру только если оба числа в диапазонах, тоесть ему на фход подается тру-тру.
+            return ((10 <= mas[0] && mas[0] <= 20) && (10 <= mas[1] && mas[1] <= 20));
+        }
+
+        /*
+    Warmup-1 > delDel
+prev  |  next  |  chance
+Given a string, if the string "del" appears starting at index 1, return a string where that "del" has been deleted. Otherwise, return the string unchanged.
+
+
+delDel("adelbc") → "abc"
+delDel("adelHello") → "aHello"
+delDel("adedbc") → "adedbc"
+
+Expected	Run
+delDel("adelbc") → "abc"	"abc"	OK
+delDel("adelHello") → "aHello"	"aHello"	OK
+delDel("adedbc") → "adedbc"	"adedbc"	OK
+delDel("abcdel") → "abcdel"	"abcdel"	OK
+delDel("add") → "add"	"add"	OK
+delDel("ad") → "ad"	"ad"	OK
+delDel("a") → "a"	"a"	OK
+delDel("") → ""	""	OK
+delDel("del") → "del"	"del"	OK
+delDel("adel") → "a"	"a"	OK
+delDel("aadelbb") → "aadelbb"	"aadelbb"	OK
+
+All Correct
+     */
+
+        static string Task7_2(string strIn)
+        {
+            // Метод индексоф возвращает индекс первого вождения символа иили подстроки
+            int indDel = strIn.IndexOf("del");
+            // Если индекс равен 1, то с помошью метода ремув аргументами которого являются  начальный символ и колчисевто символов для удаления,
+            // редактируем строку. Если условие не удовлетворяется, то возвращаем изначальную строку.
+            if (indDel == 1)
+                return strIn.Remove(1, 3);
+            return strIn;
+        }
+
+        /*
+    Warmup-1 > intMax
+prev  |  next  |  chance
+Given three int values, a b c, return the largest.
+
+
+intMax(1, 2, 3) → 3
+intMax(1, 3, 2) → 3
+intMax(3, 2, 1) → 3
+
+Expected	Run
+intMax(1, 2, 3) → 3	3	OK
+intMax(1, 3, 2) → 3	3	OK
+intMax(3, 2, 1) → 3	3	OK
+intMax(9, 3, 3) → 9	9	OK
+intMax(3, 9, 3) → 9	9	OK
+intMax(3, 3, 9) → 9	9	OK
+intMax(8, 2, 3) → 8	8	OK
+intMax(-3, -1, -2) → -1	-1	OK
+intMax(6, 2, 5) → 6	6	OK
+intMax(5, 6, 2) → 6	6	OK
+intMax(5, 2, 6) → 6	6	OK
+All Correct
+     */
+
+        static int Task7_3(int []mas)
+        {
+            // Сортируем массив и возвращаем последний элемент массива, который будет самым большим числом.
+            Array.Sort(mas);
+            return mas[mas.Length - 1];
+        }
+
+        /*
+    Warmup-1 > max1020
+ Given 2 positive int values, return the larger value that is in the range 10..20 inclusive, or return 0 if neither is in that range.
+
+
+max1020(11, 19) → 19
+max1020(19, 11) → 19
+max1020(11, 9) → 11
+
+Expected	Run
+max1020(11, 19) → 19	19	OK
+max1020(19, 11) → 19	19	OK
+max1020(11, 9) → 11	11	OK
+max1020(9, 21) → 0	0	OK
+max1020(10, 21) → 10	10	OK
+max1020(21, 10) → 10	10	OK
+max1020(9, 11) → 11	11	OK
+max1020(23, 10) → 10	10	OK
+max1020(20, 10) → 20	20	OK
+max1020(7, 20) → 20	20	OK
+max1020(17, 16) → 17	17	OK
+
+All Correct
+     */
+
+
+        static int Task7_4(int[] mas)
+        {
+            // Проверяем каждый елемент массива находится ли он в заданном диапазоне. Если нет то присваемваем ему значение 0;
+               for(int i=0; i<mas.Length;i++)
+               {
+                if (!(10 <= mas[i] && mas[i] <= 20))
+                    mas[i]=0;                    
+               }
+            // Сортируем массив и возращаем последний (самый болшой) елемент.
+            Array.Sort(mas);
+            return mas[mas.Length - 1];
             
+        }
+
+        /*Warmup-1 > endUp
+prev  |  next  |  chance
+Given a string, return a new string where the last 3 chars are now in upper case. If the string has less than 3 chars, uppercase whatever is there. Note that str.toUpperCase() returns the uppercase version of a string.
+
+
+endUp("Hello") → "HeLLO"
+endUp("hi there") → "hi thERE"
+endUp("hi") → "HI"
+Expected	Run
+endUp("Hello") → "HeLLO"	"HeLLO"	OK
+endUp("hi there") → "hi thERE"	"hi thERE"	OK
+endUp("hi") → "HI"	"HI"	OK
+endUp("woo hoo") → "woo HOO"	"woo HOO"	OK
+endUp("xyz12") → "xyZ12"	"xyZ12"	OK
+endUp("x") → "X"	"X"	OK
+endUp("") → ""	""	OK
+
+All Correct
+
+     */
+
+        static string Task7_5(string str)
+        {
+            string substr = "";
+            // Если строка больше 3-х символов, то ...
+            if (str.Length > 3)
+            {
+                // ... с помошью цикла записываем в подстроку полседние 3 символа... 
+                for (int i = 3; i > 0; i--)
+                {
+                    substr += str[str.Length - i];
+                }
+                // ... и возвращаем исходную строку в которой с помошью метода "Replace()" заменена подстрока на туже подстроку только 
+                // преобразованную в верхний регистр с помошью метода "ToUpper()".
+                return str.Replace(substr, substr.ToUpper());
+            }
+            // Если условие не выполняется, то возращаем строку преобразованную методом "ToUpper()".
+            return str.ToUpper();
+        }
     }
 }
