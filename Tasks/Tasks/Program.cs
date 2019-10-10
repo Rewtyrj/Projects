@@ -9,7 +9,7 @@ namespace Tasks
 {
     class Program
     {
-        // Task 5_4 поиграться с логичесикми операциясм, исключающее или.
+        // Task 8_3 не работает.
       
         static void Main(string[] args)
         {
@@ -51,7 +51,12 @@ namespace Tasks
             //WriteLine(Task7_2(ReadLine()));
             //WriteLine(Task7_3(Input()));
             //WriteLine(Task7_4(Input()));
-            WriteLine(Task7_5(ReadLine()));
+            //WriteLine(Task7_5(ReadLine()));
+            // WriteLine(Task8_1(ReadLine()));
+            //WriteLine(Task8_2(ReadLine()));
+             WriteLine(Task8_3(ReadLine()));
+             // WriteLine(Task8_4(Input()));
+            // WriteLine(Task8_5(ReadLine()));
         }
 
         static int[] Input()
@@ -1187,6 +1192,237 @@ All Correct
             }
             // Если условие не выполняется, то возращаем строку преобразованную методом "ToUpper()".
             return str.ToUpper();
+        }
+
+        /*
+    Warmup-2 > stringTimes
+
+	Given a string and a non-negative int n, return a larger
+	string that is n copies of the original string.
+	
+	
+	stringTimes("Hi", 2) → "HiHi"
+	stringTimes("Hi", 3) → "HiHiHi"
+	stringTimes("Hi", 1) → "Hi"
+	
+	Expected	Run
+	stringTimes("Hi", 2) → "HiHi"	"HiHi"	OK
+	stringTimes("Hi", 3) → "HiHiHi"	"HiHiHi"	OK
+	stringTimes("Hi", 1) → "Hi"	"Hi"	OK
+	stringTimes("Hi", 0) → ""	""	OK
+	stringTimes("Hi", 5) → "HiHiHiHiHi"	"HiHiHiHiHi"	OK
+	stringTimes("Oh Boy!", 2)
+					→ "Oh Boy!Oh Boy!"	"Oh Boy!Oh Boy!"	OK
+	stringTimes("x", 4) → "xxxx"	"xxxx"	OK
+	stringTimes("", 4) → ""	""	OK
+	stringTimes("code", 2) → "codecode"	"codecode"	OK
+	stringTimes("code", 3) → "codecodecode"	"codecodecode"	OK
+	
+	All Correct
+*/
+
+        static string Task8_1(string str)
+        {
+            // Создаём массив строк в котором будет храниться строка и индекс повтора.
+            string[] strMas = str.Split('/');
+            // Строка в которой будет хранится выходное значение.
+            string strOut = "";
+            // С помошью цикла записываем в новую строку исходную строку,
+            // указанное в индексе оличество раз.
+            for(int i=0; i<Convert.ToInt32(strMas[1]); i++)
+            {
+                strOut += strMas[0];
+            }
+            // Возвращаем выходное значение.
+            return strOut;
+        }
+
+        /*
+    Warmup-2 > doubleX
+
+	Given a string, return true if the first instance of "x" in the
+	string is immediately followed by another "x".
+	
+	
+	doubleX("axxbb") → true
+	doubleX("axaxax") → false
+	doubleX("xxxxx") → true
+	
+	Expected	Run
+	doubleX("axxbb") → true	true	OK
+	doubleX("axaxax") → false	false	OK
+	doubleX("xxxxx") → true	true	OK
+	doubleX("xaxxx") → false	false	OK
+	doubleX("aaaax") → false	false	OK
+	doubleX("") → false	false	OK
+	doubleX("abc") → false	false	OK
+	doubleX("x") → false	false	OK
+	doubleX("xx") → true	true	OK
+	doubleX("xax") → false	false	OK
+	doubleX("xaxx") → false	false	OK
+	
+	All Correct
+*/
+
+        static bool Task8_2(string str)
+        {
+            // Проверяем является ли символ "х" последним в строке, иначе сравнение не имеет смысла... 
+            if (str.IndexOf('x') != str.Length - 1)
+            {
+                // Если смвол "х" не последний то мы сравниваем
+                // является ли следующий от первого вхождения символа "х" таким же.
+                return str[str.IndexOf('x') + 1] == 'x';
+            }
+            // ... и мы возвращаем фолс.
+            return false;
+        }
+
+        /*
+    Warmup-2 > last2
+	
+	Given a string, return the count of the number of times that a
+	substring length 2 appears in the string and also as the last 
+	2 chars of the string, so "hixxxhi" yields 1 (we won't count 
+	the end substring).
+	
+	
+	last2("hixxhi") → 1
+	last2("xaxxaxaxx") → 1
+	last2("axxxaaxx") → 2
+	
+	Expected	Run
+	last2("hixxhi") → 1	1	OK
+	last2("xaxxaxaxx") → 1	1	OK
+	last2("axxxaaxx") → 2	2	OK
+	last2("xxaxxaxxaxx") → 3	3	OK
+	last2("xaxaxaxx") → 0	0	OK
+	last2("xxxx") → 2	2	OK
+	last2("13121312") → 1	1	OK
+	last2("11212") → 1	1	OK
+	last2("13121311") → 0	0	OK
+	last2("1717171") → 2	2	OK
+	last2("hi") → 0	0	OK
+	last2("h") → 0	0	OK
+	last2("") → 0	0	OK
+	
+	All Correct
+*/
+
+        static int Task8_3(string str)
+        {
+            int count = 0;
+           
+            if (str.Length > 3)
+            {
+                string strSub = str.Substring(str.Length - 2, 2);
+                 string str1=str.Remove(str.Length - 2, 2);
+                for (int i=0; i < str1.Length; i++)
+                {
+                    if (str1.LastIndexOf(strSub)>0)
+                    {
+                        count++;
+                    }                                        
+                    str1 = str1.Remove(str1.LastIndexOf(strSub) - 2, 2);
+                }
+
+                /* while (str.IndexOf(strSub) != str.Length - 2)
+                 {
+                     if (str[str.IndexOf(strSub)] == str[str.IndexOf(strSub) + 2])
+                     {
+                         str = str.Remove(str.IndexOf(strSub), 2);
+                         count++;
+                     }
+                     else
+                     {
+                         str = str.Remove(str.IndexOf(strSub), 2);
+                         count++;
+                     }
+
+                 }
+                 */
+                return count;
+            }
+            return 0;
+        }
+
+        /*
+    Warmup-2 > array123
+	
+	Given an array of ints, return true if the sequence of numbers
+	1, 2, 3 appears in the array somewhere.
+	
+	
+	array123([1, 1, 2, 3, 1]) → true
+	array123([1, 1, 2, 4, 1]) → false
+	array123([1, 1, 2, 1, 2, 3]) → true
+	
+	Expected	Run
+	array123([1, 1, 2, 3, 1]) → true	true	OK
+	array123([1, 1, 2, 4, 1]) → false	false	OK
+	array123([1, 1, 2, 1, 2, 3]) → true	true	OK
+	array123([1, 1, 2, 1, 2, 1]) → false	false	OK
+	array123([1, 2, 3, 1, 2, 3]) → true	true	OK
+	array123([1, 2, 3]) → true	true	OK
+	array123([1, 1, 1]) → false	false	OK
+	array123([1, 2]) → false	false	OK
+	array123([1]) → false	false	OK
+	array123([]) → false	false	OK
+	
+	All Correct
+*/
+        static bool Task8_4(int[] mas)
+        {
+            // Возвращаем результат наличия одновременно 1, 2 и 3 в массиве с помошью метода Exists(),
+            // который показывает есть ли элемент в массиве.
+            return (Array.Exists(mas, element=>element==1)&& Array.Exists(mas, element => element == 2)&& Array.Exists(mas, element => element == 3));
+        }
+
+        /*
+    Warmup-2 > altPairs
+
+	Given a string, return a string made of the chars at indexes
+	0,1, 4,5, 8,9 ... so "kittens" yields "kien".
+	
+	
+	altPairs("kitten") → "kien"
+	altPairs("Chocolate") → "Chole"
+	altPairs("CodingHorror") → "Congrr"
+	
+	Expected	Run
+	altPairs("kitten") → "kien"	"kien"	OK
+	altPairs("Chocolate") → "Chole"	"Chole"	OK
+	altPairs("CodingHorror") → "Congrr"	"Congrr"	OK
+	altPairs("yak") → "ya"	"ya"	OK
+	altPairs("ya") → "ya"	"ya"	OK
+	altPairs("y") → "y"	"y"	OK
+	altPairs("") → ""	""	OK
+	altPairs("ThisThatTheOther") → "ThThThth"	"ThThThth"	OK
+	
+	All Correct
+*/
+
+        static string Task8_5(string str)
+        {
+            // Выходная строка.
+            string strOut = "";
+            int i = 0;
+            // Пока индекс меньше длинны строки... 
+              while (i < str.Length)
+              {
+                // если индекс не равен концу строки, записываем подстроку
+                // из двух символов, начиная с индекса...
+                if (i != str.Length - 1)                
+                    strOut += str.Substring(i, 2);
+                //... если индекс равен концу строки, то толко один символ.
+                else
+                strOut += str.Substring(i, 1);
+                // Увеличиваем индекс на 4, так как нам нужно записывать 
+                //каждую 4-ю пару символов либо символ.
+                i += 4;
+              }
+            // Возвращаем выходную строку.
+            return strOut;
+
         }
     }
 }
