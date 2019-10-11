@@ -1310,38 +1310,29 @@ All Correct
 
         static int Task8_3(string str)
         {
-            int count = 0;
-           
+            // Переменная, хранящая сколько раз подстрока встречается в строке.
+            int count = 0;   
+            // Так как подстрока, которую мы ищем состоит из 2-х символов, а исходную подстроку мы не учитываем,
+            // то если строка меньше 4-х символов...(1)
             if (str.Length > 3)
             {
+                // В подстроку записываем 2 последних символа.
                 string strSub = str.Substring(str.Length - 2, 2);
-                 string str1=str.Remove(str.Length - 2, 2);
-                for (int i=0; i < str1.Length; i++)
+                // С помошью цикла проверяем возвращает ли индекс метод поиска первого вхождения подстроки.
+                // По умолчанию, если метод не находит строку, он возвращает "-1"
+                while (str.IndexOf(strSub)!=-1)
                 {
-                    if (str1.LastIndexOf(strSub)>0)
-                    {
-                        count++;
-                    }                                        
-                    str1 = str1.Remove(str1.LastIndexOf(strSub) - 2, 2);
-                }
-
-                /* while (str.IndexOf(strSub) != str.Length - 2)
-                 {
-                     if (str[str.IndexOf(strSub)] == str[str.IndexOf(strSub) + 2])
-                     {
-                         str = str.Remove(str.IndexOf(strSub), 2);
-                         count++;
-                     }
-                     else
-                     {
-                         str = str.Remove(str.IndexOf(strSub), 2);
-                         count++;
-                     }
-
-                 }
-                 */
-                return count;
+                    // По ходу цикла который выполняется при нахождении подстроки итерируем счётчик,...(2)
+                    count++;
+                    //... (2) а после удаляем один символ начиная с индекса вхождения строки.
+                  str=str.Remove(str.IndexOf(strSub), 1);
+                }     
+                // После того как программа выйдет из цикла возвращаем счётчик, но  со значением на 1 меньше,
+                // так как исходную подстроку мы не считаем.
+                return count-1;
             }
+            // (2)... мы возращаем "0", так как вхождений в строку подстроки
+            // больше чем первого раза в исходной позиции не будет.
             return 0;
         }
 
