@@ -54,9 +54,13 @@ namespace Tasks
             //WriteLine(Task7_5(ReadLine()));
             // WriteLine(Task8_1(ReadLine()));
             //WriteLine(Task8_2(ReadLine()));
-             WriteLine(Task8_3(ReadLine()));
-             // WriteLine(Task8_4(Input()));
+            // WriteLine(Task8_3(ReadLine()));
+            // WriteLine(Task8_4(Input()));
             // WriteLine(Task8_5(ReadLine()));
+            //WriteLine(Task9_1(Input()));
+            //WriteLine(Task9_2(ReadLine()));
+            //WriteLine(Task9_3(ReadLine()));
+            WriteLine(Task9_4(Input()));
         }
 
         static int[] Input()
@@ -1324,7 +1328,7 @@ All Correct
                 {
                     // По ходу цикла который выполняется при нахождении подстроки итерируем счётчик,...(2)
                     count++;
-                    //... (2) а после удаляем один символ начиная с индекса вхождения строки.
+                    //... (2) а после удаляем один символ начиная с индекса вхождения строки?.
                   str=str.Remove(str.IndexOf(strSub), 1);
                 }     
                 // После того как программа выйдет из цикла возвращаем счётчик, но  со значением на 1 меньше,
@@ -1414,6 +1418,178 @@ All Correct
             // Возвращаем выходную строку.
             return strOut;
 
+        }
+
+        /*
+    Warmup-2 > noTriples
+	
+	Given an array of ints, we'll say that a triple is a value 
+	appearing 3 times in a row in the array. Return true if the 
+	array does not contain any triples.
+	
+	
+	noTriples([1, 1, 2, 2, 1]) → true
+	noTriples([1, 1, 2, 2, 2, 1]) → false
+	noTriples([1, 1, 1, 2, 2, 2, 1]) → false
+	
+	Expected	Run
+	noTriples([1, 1, 2, 2, 1]) → true	true	OK
+	noTriples([1, 1, 2, 2, 2, 1]) → false	false	OK
+	noTriples([1, 1, 1, 2, 2, 2, 1]) → false	false	OK
+	noTriples([1, 1, 2, 2, 1, 2, 1]) → true	true	OK
+	noTriples([1, 2, 1]) → true	true	OK
+	noTriples([1, 1, 1]) → false	false	OK
+	noTriples([1, 1]) → true	true	OK
+	noTriples([1]) → true	true	OK
+	noTriples([]) → true	true	OK
+	
+	All Correct
+
+*/
+        // Ещё не работает.
+        static bool Task9_1(int[] mas)
+        {
+            int triple=mas[0];
+            int count = 0;
+            for(int i=1; i<mas.Length;i++)
+            {
+                while(triple == mas[i])
+                {
+                    count++;
+                    if (count == 2)
+                    {
+                        return false;                 
+                    }
+                }               
+                if (count == 2)
+                    break;
+
+                else
+                {
+                    triple = mas[i];
+                    count = 0;
+                }
+          
+            }
+            return true;
+        }
+
+        /*
+    Warmup-2 > frontTimes
+	
+	Given a string and a non-negative int n, we'll say that the 
+	front of the string is the first 3 chars, or whatever is there 
+	if the string is less than length 3. Return n copies of the 
+	front;
+	
+	
+	frontTimes("Chocolate", 2) → "ChoCho"
+	frontTimes("Chocolate", 3) → "ChoChoCho"
+	frontTimes("Abc", 3) → "AbcAbcAbc"
+	
+	Expected	Run
+	frontTimes("Chocolate", 2) → "ChoCho"	"ChoCho"	OK
+	frontTimes("Chocolate", 3) → "ChoChoCho"	"ChoChoCho"	OK
+	frontTimes("Abc", 3) → "AbcAbcAbc"	"AbcAbcAbc"	OK
+	frontTimes("Ab", 4) → "AbAbAbAb"	"AbAbAbAb"	OK
+	frontTimes("A", 4) → "AAAA"	"AAAA"	OK
+	frontTimes("", 4) → ""	""	OK
+	frontTimes("Abc", 0) → ""	""	OK
+	
+	All Correc
+
+*/
+
+        static string Task9_2(string str)
+        {
+            string[] strMas = str.Split('/');
+            string strout = "";
+            //Если строка длиннее 3-х символов, то удаляем все символы кроме первых трёх. 
+            if (strMas[0].Length > 3)
+                strMas[0] = strMas[0].Remove(3, strMas[0].Length - 3);
+            // После преобразования длинной строки или исходной но короткой запиываем её n раз в выходную строку.
+            for (int i = 0; i <Convert.ToInt32(strMas[1]); i++)
+            {
+                strout += strMas[0];
+            }
+            return strout;
+        }
+
+        /*
+    Warmup-2 > stringBits
+	
+	Given a string, return a new string made of every other char 
+	starting with the first, so "Hello" yields "Hlo".
+	
+	
+	stringBits("Hello") → "Hlo"
+	stringBits("Hi") → "H"
+	stringBits("Heeololeo") → "Hello"
+	
+	Expected	Run
+	stringBits("Hello") → "Hlo"	"Hlo"	OK
+	stringBits("Hi") → "H"	"H"	OK
+	stringBits("Heeololeo") → "Hello"	"Hello"	OK
+	stringBits("HiHiHi") → "HHH"	"HHH"	OK
+	stringBits("") → ""	""	OK
+	stringBits("Greetings") → "Getns"	"Getns"	OK
+	stringBits("Chocoate") → "Coot"	"Coot"	OK
+	stringBits("pi") → "p"	"p"	OK
+	stringBits("Hello Kitten") → "HloKte"	"HloKte"	OK
+	stringBits("hxaxpxpxy") → "happy"	"happy"	OK
+	
+	All Correc
+*/
+
+        static string Task9_3(string str)
+        {
+            
+            string strOut = "";
+            // Записываем в выходную строку только чётные символы входной строки.
+            for(int i=0; i<str.Length; i++)
+            {
+                if (i % 2 == 0)
+                    strOut += str[i];
+            }
+            return strOut;
+        }
+
+        /*
+    Warmup-2 > arrayCount9
+
+	Given an array of ints, return the number of 9's in the array.
+	
+	
+	arrayCount9([1, 2, 9]) → 1
+	arrayCount9([1, 9, 9]) → 2
+	arrayCount9([1, 9, 9, 3, 9]) → 3
+	
+	Expected	Run
+	arrayCount9([1, 2, 9]) → 1	1	OK
+	arrayCount9([1, 9, 9]) → 2	2	OK
+	arrayCount9([1, 9, 9, 3, 9]) → 3	3	OK
+	arrayCount9([1, 2, 3]) → 0	0	OK
+	arrayCount9([]) → 0	0	OK
+	arrayCount9([4, 2, 4, 3, 1]) → 0	0	OK
+	arrayCount9([9, 2, 4, 3, 1]) → 1	1	OK
+	
+	All Correct
+*/
+
+        static int Task9_4(int[] mas)
+        {
+            // Первый способ "ручной" с помошью цикла.
+            /* int count = 0;
+             foreach(int i in mas)
+             {
+                 if (i == 9)
+                     count++;
+             }
+             return count;
+             */
+            // Второй способ с помошью метода клас Эррей. Метод ФайнОлл возвращает
+            //массив чисел удволетворяющих условию предикта.
+            return Array.FindAll(mas, x => x == 9).Length;
         }
     }
 }
