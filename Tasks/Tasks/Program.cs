@@ -10,7 +10,7 @@ namespace Tasks
     class Program
     {
         // Task 8_3 не работает.
-      
+
         static void Main(string[] args)
         {
 
@@ -57,10 +57,10 @@ namespace Tasks
             // WriteLine(Task8_3(ReadLine()));
             // WriteLine(Task8_4(Input()));
             // WriteLine(Task8_5(ReadLine()));
-            //WriteLine(Task9_1(Input()));
+            WriteLine(Task9_1(Input()));
             //WriteLine(Task9_2(ReadLine()));
             //WriteLine(Task9_3(ReadLine()));
-            WriteLine(Task9_4(Input()));
+            //WriteLine(Task9_4(Input()));
         }
 
         static int[] Input()
@@ -750,7 +750,7 @@ All Correct
             }
             */
 
-            return  new string(st);
+            return new string(st);
         }
 
         /*
@@ -782,7 +782,7 @@ All Correct
      */
 
         static bool Task5_4(int[] mas)
-        {    
+        {
             //Двa счётчика.
             int a = 0;
             int b = 0;
@@ -799,7 +799,7 @@ All Correct
                 }
             }
             // Если счётчик показал что оба числа не входят в один диапазон, то программа возращает тру, иначе фолс. 
-            if ((a != 2)&&( b!=2))
+            if ((a != 2) && (b != 2))
             {
                 return true;
             }
@@ -807,7 +807,7 @@ All Correct
             {
                 return false;
             }
-            
+
         }
 
         /*
@@ -845,11 +845,11 @@ All Correct
             // Сверяем символы входной строкой с шаблоном пока не сравняться первые два символа. Если символ совпадает,
             // то записывается в выходную строку.
             for (int i = 0; i < str.Length; i++)
-            {               
-                    if (str[i] == dict[i])
-                        strout = strout + str[i];
+            {
+                if (str[i] == dict[i])
+                    strout = strout + str[i];
                 if (i == 1)
-                    break;       
+                    break;
             }
 
             return strout;
@@ -948,7 +948,7 @@ All Correct
             if (mas[0] == mas[1])
                 return (mas[0] + mas[1]) * 2;
             return mas[0] + mas[1];
-            
+
         }
 
         /*
@@ -1007,16 +1007,16 @@ All Correct
 
         static string Task6_5(string str)
         {
-            string strout="";
+            string strout = "";
             //Если строка длиннее 3-х символов, то удаляем все символы кроме первых трёх. 
-            if (str.Length > 3)                
-            str = str.Remove(3, str.Length-3);
-           
+            if (str.Length > 3)
+                str = str.Remove(3, str.Length - 3);
+
             // После преобразования длинной строки или исходной но короткой запиываем её три раза в выходную строку.
             for (int i = 0; i < 3; i++)
             {
-                
-               strout += str;
+
+                strout += str;
             }
             return strout;
         }
@@ -1111,7 +1111,7 @@ intMax(5, 2, 6) → 6	6	OK
 All Correct
      */
 
-        static int Task7_3(int []mas)
+        static int Task7_3(int[] mas)
         {
             // Сортируем массив и возвращаем последний элемент массива, который будет самым большим числом.
             Array.Sort(mas);
@@ -1147,15 +1147,15 @@ All Correct
         static int Task7_4(int[] mas)
         {
             // Проверяем каждый елемент массива находится ли он в заданном диапазоне. Если нет то присваемваем ему значение 0;
-               for(int i=0; i<mas.Length;i++)
-               {
+            for (int i = 0; i < mas.Length; i++)
+            {
                 if (!(10 <= mas[i] && mas[i] <= 20))
-                    mas[i]=0;                    
-               }
+                    mas[i] = 0;
+            }
             // Сортируем массив и возращаем последний (самый болшой) елемент.
             Array.Sort(mas);
             return mas[mas.Length - 1];
-            
+
         }
 
         /*Warmup-1 > endUp
@@ -1233,7 +1233,7 @@ All Correct
             string strOut = "";
             // С помошью цикла записываем в новую строку исходную строку,
             // указанное в индексе оличество раз.
-            for(int i=0; i<Convert.ToInt32(strMas[1]); i++)
+            for (int i = 0; i < Convert.ToInt32(strMas[1]); i++)
             {
                 strOut += strMas[0];
             }
@@ -1315,7 +1315,7 @@ All Correct
         static int Task8_3(string str)
         {
             // Переменная, хранящая сколько раз подстрока встречается в строке.
-            int count = 0;   
+            int count = 0;
             // Так как подстрока, которую мы ищем состоит из 2-х символов, а исходную подстроку мы не учитываем,
             // то если строка меньше 4-х символов...(1)
             if (str.Length > 3)
@@ -1324,16 +1324,16 @@ All Correct
                 string strSub = str.Substring(str.Length - 2, 2);
                 // С помошью цикла проверяем возвращает ли индекс метод поиска первого вхождения подстроки.
                 // По умолчанию, если метод не находит строку, он возвращает "-1"
-                while (str.IndexOf(strSub)!=-1)
+                while (str.IndexOf(strSub) != -1)
                 {
                     // По ходу цикла который выполняется при нахождении подстроки итерируем счётчик,...(2)
                     count++;
                     //... (2) а после удаляем один символ начиная с индекса вхождения строки?.
-                  str=str.Remove(str.IndexOf(strSub), 1);
-                }     
+                    str = str.Remove(str.IndexOf(strSub), 1);
+                }
                 // После того как программа выйдет из цикла возвращаем счётчик, но  со значением на 1 меньше,
                 // так как исходную подстроку мы не считаем.
-                return count-1;
+                return count - 1;
             }
             // (2)... мы возращаем "0", так как вхождений в строку подстроки
             // больше чем первого раза в исходной позиции не будет.
@@ -1369,7 +1369,7 @@ All Correct
         {
             // Возвращаем результат наличия одновременно 1, 2 и 3 в массиве с помошью метода Exists(),
             // который показывает есть ли элемент в массиве.
-            return (Array.Exists(mas, element=>element==1)&& Array.Exists(mas, element => element == 2)&& Array.Exists(mas, element => element == 3));
+            return (Array.Exists(mas, element => element == 1) && Array.Exists(mas, element => element == 2) && Array.Exists(mas, element => element == 3));
         }
 
         /*
@@ -1402,19 +1402,19 @@ All Correct
             string strOut = "";
             int i = 0;
             // Пока индекс меньше длинны строки... 
-              while (i < str.Length)
-              {
+            while (i < str.Length)
+            {
                 // если индекс не равен концу строки, записываем подстроку
                 // из двух символов, начиная с индекса...
-                if (i != str.Length - 1)                
+                if (i != str.Length - 1)
                     strOut += str.Substring(i, 2);
                 //... если индекс равен концу строки, то толко один символ.
                 else
-                strOut += str.Substring(i, 1);
+                    strOut += str.Substring(i, 1);
                 // Увеличиваем индекс на 4, так как нам нужно записывать 
                 //каждую 4-ю пару символов либо символ.
                 i += 4;
-              }
+            }
             // Возвращаем выходную строку.
             return strOut;
 
@@ -1446,59 +1446,46 @@ All Correct
 	All Correct
 
 */
-        // Ещё не работает.
+
         static bool Task9_1(int[] mas)
         {
-            int triple=mas[0];
-            int count = 0;
-            for(int i=1; i<mas.Length;i++)
+            // С помошью цикла проходимся по массиву и если три символа подря одинаковы, возвращаем фолс,
+            // если мы выходим из цикла не удовлетворив условие возвращаем тру.
+            for (int i = 0; i < mas.Length - 2; i++)
             {
-                while(triple == mas[i])
-                {
-                    count++;
-                    if (count == 2)
-                    {
-                        return false;                 
-                    }
-                }               
-                if (count == 2)
-                    break;
+                if (mas[i] == mas[i + 1] && mas[i + 1] == mas[i + 2])
+                    return false;
 
-                else
-                {
-                    triple = mas[i];
-                    count = 0;
-                }
-          
+
             }
             return true;
         }
 
         /*
     Warmup-2 > frontTimes
-	
-	Given a string and a non-negative int n, we'll say that the 
-	front of the string is the first 3 chars, or whatever is there 
-	if the string is less than length 3. Return n copies of the 
-	front;
-	
-	
-	frontTimes("Chocolate", 2) → "ChoCho"
-	frontTimes("Chocolate", 3) → "ChoChoCho"
-	frontTimes("Abc", 3) → "AbcAbcAbc"
-	
-	Expected	Run
-	frontTimes("Chocolate", 2) → "ChoCho"	"ChoCho"	OK
-	frontTimes("Chocolate", 3) → "ChoChoCho"	"ChoChoCho"	OK
-	frontTimes("Abc", 3) → "AbcAbcAbc"	"AbcAbcAbc"	OK
-	frontTimes("Ab", 4) → "AbAbAbAb"	"AbAbAbAb"	OK
-	frontTimes("A", 4) → "AAAA"	"AAAA"	OK
-	frontTimes("", 4) → ""	""	OK
-	frontTimes("Abc", 0) → ""	""	OK
-	
-	All Correc
 
-*/
+    Given a string and a non-negative int n, we'll say that the 
+    front of the string is the first 3 chars, or whatever is there 
+    if the string is less than length 3. Return n copies of the 
+    front;
+
+
+    frontTimes("Chocolate", 2) → "ChoCho"
+    frontTimes("Chocolate", 3) → "ChoChoCho"
+    frontTimes("Abc", 3) → "AbcAbcAbc"
+
+    Expected	Run
+    frontTimes("Chocolate", 2) → "ChoCho"	"ChoCho"	OK
+    frontTimes("Chocolate", 3) → "ChoChoCho"	"ChoChoCho"	OK
+    frontTimes("Abc", 3) → "AbcAbcAbc"	"AbcAbcAbc"	OK
+    frontTimes("Ab", 4) → "AbAbAbAb"	"AbAbAbAb"	OK
+    frontTimes("A", 4) → "AAAA"	"AAAA"	OK
+    frontTimes("", 4) → ""	""	OK
+    frontTimes("Abc", 0) → ""	""	OK
+
+    All Correc
+
+    */
 
         static string Task9_2(string str)
         {
@@ -1508,7 +1495,7 @@ All Correct
             if (strMas[0].Length > 3)
                 strMas[0] = strMas[0].Remove(3, strMas[0].Length - 3);
             // После преобразования длинной строки или исходной но короткой запиываем её n раз в выходную строку.
-            for (int i = 0; i <Convert.ToInt32(strMas[1]); i++)
+            for (int i = 0; i < Convert.ToInt32(strMas[1]); i++)
             {
                 strout += strMas[0];
             }
@@ -1517,36 +1504,36 @@ All Correct
 
         /*
     Warmup-2 > stringBits
-	
-	Given a string, return a new string made of every other char 
-	starting with the first, so "Hello" yields "Hlo".
-	
-	
-	stringBits("Hello") → "Hlo"
-	stringBits("Hi") → "H"
-	stringBits("Heeololeo") → "Hello"
-	
-	Expected	Run
-	stringBits("Hello") → "Hlo"	"Hlo"	OK
-	stringBits("Hi") → "H"	"H"	OK
-	stringBits("Heeololeo") → "Hello"	"Hello"	OK
-	stringBits("HiHiHi") → "HHH"	"HHH"	OK
-	stringBits("") → ""	""	OK
-	stringBits("Greetings") → "Getns"	"Getns"	OK
-	stringBits("Chocoate") → "Coot"	"Coot"	OK
-	stringBits("pi") → "p"	"p"	OK
-	stringBits("Hello Kitten") → "HloKte"	"HloKte"	OK
-	stringBits("hxaxpxpxy") → "happy"	"happy"	OK
-	
-	All Correc
-*/
+
+    Given a string, return a new string made of every other char 
+    starting with the first, so "Hello" yields "Hlo".
+
+
+    stringBits("Hello") → "Hlo"
+    stringBits("Hi") → "H"
+    stringBits("Heeololeo") → "Hello"
+
+    Expected	Run
+    stringBits("Hello") → "Hlo"	"Hlo"	OK
+    stringBits("Hi") → "H"	"H"	OK
+    stringBits("Heeololeo") → "Hello"	"Hello"	OK
+    stringBits("HiHiHi") → "HHH"	"HHH"	OK
+    stringBits("") → ""	""	OK
+    stringBits("Greetings") → "Getns"	"Getns"	OK
+    stringBits("Chocoate") → "Coot"	"Coot"	OK
+    stringBits("pi") → "p"	"p"	OK
+    stringBits("Hello Kitten") → "HloKte"	"HloKte"	OK
+    stringBits("hxaxpxpxy") → "happy"	"happy"	OK
+
+    All Correc
+    */
 
         static string Task9_3(string str)
         {
-            
+
             string strOut = "";
             // Записываем в выходную строку только чётные символы входной строки.
-            for(int i=0; i<str.Length; i++)
+            for (int i = 0; i < str.Length; i++)
             {
                 if (i % 2 == 0)
                     strOut += str[i];
@@ -1557,24 +1544,24 @@ All Correct
         /*
     Warmup-2 > arrayCount9
 
-	Given an array of ints, return the number of 9's in the array.
-	
-	
-	arrayCount9([1, 2, 9]) → 1
-	arrayCount9([1, 9, 9]) → 2
-	arrayCount9([1, 9, 9, 3, 9]) → 3
-	
-	Expected	Run
-	arrayCount9([1, 2, 9]) → 1	1	OK
-	arrayCount9([1, 9, 9]) → 2	2	OK
-	arrayCount9([1, 9, 9, 3, 9]) → 3	3	OK
-	arrayCount9([1, 2, 3]) → 0	0	OK
-	arrayCount9([]) → 0	0	OK
-	arrayCount9([4, 2, 4, 3, 1]) → 0	0	OK
-	arrayCount9([9, 2, 4, 3, 1]) → 1	1	OK
-	
-	All Correct
-*/
+    Given an array of ints, return the number of 9's in the array.
+
+
+    arrayCount9([1, 2, 9]) → 1
+    arrayCount9([1, 9, 9]) → 2
+    arrayCount9([1, 9, 9, 3, 9]) → 3
+
+    Expected	Run
+    arrayCount9([1, 2, 9]) → 1	1	OK
+    arrayCount9([1, 9, 9]) → 2	2	OK
+    arrayCount9([1, 9, 9, 3, 9]) → 3	3	OK
+    arrayCount9([1, 2, 3]) → 0	0	OK
+    arrayCount9([]) → 0	0	OK
+    arrayCount9([4, 2, 4, 3, 1]) → 0	0	OK
+    arrayCount9([9, 2, 4, 3, 1]) → 1	1	OK
+
+    All Correct
+    */
 
         static int Task9_4(int[] mas)
         {
