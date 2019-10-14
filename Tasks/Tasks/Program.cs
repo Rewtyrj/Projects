@@ -57,10 +57,11 @@ namespace Tasks
             // WriteLine(Task8_3(ReadLine()));
             // WriteLine(Task8_4(Input()));
             // WriteLine(Task8_5(ReadLine()));
-            WriteLine(Task9_1(Input()));
+            // WriteLine(Task9_1(Input()));
             //WriteLine(Task9_2(ReadLine()));
             //WriteLine(Task9_3(ReadLine()));
             //WriteLine(Task9_4(Input()));
+            WriteLine(Task9_5(ReadLine()));
         }
 
         static int[] Input()
@@ -1578,5 +1579,51 @@ All Correct
             //массив чисел удволетворяющих условию предикта.
             return Array.FindAll(mas, x => x == 9).Length;
         }
+
+        /*
+    Warmup-2 > stringMatch
+
+	Given 2 strings, a and b, return the number of the positions 
+	where they contain the same length 2 substring. So "xxcaazz" 
+	and "xxbaaz" yields 3, since the "xx", "aa", and "az" 
+	substrings appear in the same place in both strings.
+	
+	
+	stringMatch("xxcaazz", "xxbaaz") → 3
+	stringMatch("abc", "abc") → 2
+	stringMatch("abc", "axc") → 0
+	
+	Expected	Run
+	stringMatch("xxcaazz", "xxbaaz") → 3	3	OK
+	stringMatch("abc", "abc") → 2	2	OK
+	stringMatch("abc", "axc") → 0	0	OK
+	stringMatch("hello", "he") → 1	1	OK
+	stringMatch("he", "hello") → 1	1	OK
+	stringMatch("h", "hello") → 0	0	OK
+	stringMatch("", "hello") → 0	0	OK
+	stringMatch("aabbccdd", "abbbxxd") → 1	1	OK
+	stringMatch("aaxxaaxx", "iaxxai") → 3	3	OK
+	stringMatch("iaxxai", "aaxxaaxx") → 3	3	OK
+	
+	All Correct
+*/
+
+        static int Task9_5(string strIn)
+        {    
+            // Переменная хранящаю количество совпадений.
+            int outcount = 0;
+            string[] strMas = strIn.Split('/');
+            // В цикле проверяются пары символов на предмет совпадения подстрок и икрементации счётчике, если совпадения есть.
+            // К тому же предел цикла устанавливается длинной самой короткой строки, дабы избежать выхода за пределы массива.
+            for (int i = 0; i < Math.Min(strMas[1].Length,strMas[0].Length) - 1; i++)
+            {
+                if (strMas[0][i] == strMas[1][i] && strMas[0][i + 1] == strMas[1][i + 1])
+                {
+                    outcount++;
+                }              
+            }
+            return outcount;
+        }
+
     }
 }
