@@ -61,7 +61,15 @@ namespace Tasks
             //WriteLine(Task9_2(ReadLine()));
             //WriteLine(Task9_3(ReadLine()));
             //WriteLine(Task9_4(Input()));
-            WriteLine(Task9_5(ReadLine()));
+            // WriteLine(Task9_5(ReadLine()));
+            //WriteLine(Task10_1(ReadLine()));
+            //WriteLine(Task10_3(ReadLine()));
+            //WriteLine(Task10_4(ReadLine()));
+            WriteLine(Task10_5(Input()));
+            
+            
+           
+
         }
 
         static int[] Input()
@@ -71,12 +79,14 @@ namespace Tasks
             string input = Console.ReadLine();
             string[] str = input.Split(' ');
             int[] mas = new int[str.Length];
-
+            if (str[0] == "")
+                return mas=null;
             for (int i = 0; i < str.Length; i++)
             {
                 mas[i] = Convert.ToInt32(str[i]);
             }
             return mas;
+            
         }
         static void Enia_195(int[] mas)
         {
@@ -1625,5 +1635,199 @@ All Correct
             return outcount;
         }
 
+        /*
+    Warmup-2 > stringYak
+
+	Suppose the string "yak" is unlucky. Given a string, return a 
+	version where all the "yak" are removed, but the "a" can be 
+	any char. The "yak" strings will not overlap.
+	
+	
+	stringYak("yakpak") → "pak"
+	stringYak("pakyak") → "pak"
+	stringYak("yak123ya") → "123ya"
+	
+	Expected	Run
+	stringYak("yakpak") → "pak"	"pak"	OK
+	stringYak("pakyak") → "pak"	"pak"	OK
+	stringYak("yak123ya") → "123ya"	"123ya"	OK
+	stringYak("yak") → ""	""	OK
+	stringYak("yakxxxyak") → "xxx"	"xxx"	OK
+	stringYak("HiyakHi") → "HiHi"	"HiHi"	OK
+	stringYak("xxxyakyyyakzzz") → "xxxyyzzz"	"xxxyyzzz"	OK
+	
+	All Correct
+*/
+
+        static string Task10_1(string strIn)
+        {
+            // Подстрока, которую нужно удалить.
+            string subStr = "yak";
+            // До тех пор, пока цикл будет находить подстроку в строке...
+            while (strIn.IndexOf(subStr) != -1)
+            {
+                //... будем удалять симолы начиная с вхождения подстроки в строку на длинну подстроки.
+                strIn = strIn.Remove(strIn.IndexOf(subStr), subStr.Length);
+            }
+            return strIn;
+        }
+
+        /*
+    Warmup-2 > has271
+
+	Given an array of ints, return true if it contains 
+	a 2, 7, 1 pattern: a value, followed by the value plus 5, 
+	followed by the value minus 1. Additionally the 271 counts 
+	even if the "1" differs by 2 or less from the correct value.
+	
+	
+	has271([1, 2, 7, 1]) → true
+	has271([1, 2, 8, 1]) → false
+	has271([2, 7, 1]) → true
+	
+	Expected	Run
+	has271([1, 2, 7, 1]) → true	true	OK
+	has271([1, 2, 8, 1]) → false	false	OK
+	has271([2, 7, 1]) → true	true	OK
+	has271([3, 8, 2]) → true	true	OK
+	has271([2, 7, 3]) → true	true	OK
+	has271([2, 7, 4]) → false	false	OK
+	has271([2, 7, -1]) → true	true	OK
+	has271([2, 7, -2]) → false	false	OK
+	has271([4, 5, 3, 8, 0]) → true	true	OK
+	has271([2, 7, 5, 10, 4]) → true	true	OK
+	has271([2, 7, -2, 4, 9, 3]) → true	true	OK
+	has271([2, 7, 5, 10, 1]) → false	false	OK
+	has271([2, 7, -2, 4, 10, 2]) → false	false	OK
+	has271([1, 1, 4, 9, 0]) → false	false	OK
+	has271([1, 1, 4, 9, 4, 9, 2]) → true	true	OK
+	
+	All Correct
+*/
+ 
+
+        /*
+    Warmup-2 > countXX
+
+	Count the number of "xx" in the given string. We'll say that 
+	overlapping is allowed, so "xxx" contains 2 "xx".
+	
+	
+	countXX("abcxx") → 1
+	countXX("xxx") → 2
+	countXX("xxxx") → 3
+	
+	Expected	Run
+	countXX("abcxx") → 1	1	OK
+	countXX("xxx") → 2	2	OK
+	countXX("xxxx") → 3	3	OK
+	countXX("abc") → 0	0	OK
+	countXX("Hello there") → 0	0	OK
+	countXX("Hexxo thxxe") → 2	2	OK
+	countXX("") → 0	0	OK
+	countXX("Kittens") → 0	0	OK
+	countXX("Kittensxxx") → 2	2	OK
+	
+	All Correct
+*/
+
+        static int Task10_3(string strIn)
+        {
+            // Счётчик.
+            int count = 0;
+            for(int i=0;i< strIn.Length-1; i++)
+            {
+                // Если два последовательно идущих символа равны "х", инкрементируем счётчик.
+                if (strIn[i] == 'x' && strIn[i + 1] == 'x')
+                    count++;
+            }
+            return count;
+        }
+
+        /*
+	Warmup-2 > stringSplosion
+	
+	Given a non-empty string like "Code" return a string 
+	like "CCoCodCode".
+	
+	
+	stringSplosion("Code") → "CCoCodCode"
+	stringSplosion("abc") → "aababc"
+	stringSplosion("ab") → "aab"
+	
+		Expected	Run
+	stringSplosion("Code") → "CCoCodCode"	"CCoCodCode"	OK
+	stringSplosion("abc") → "aababc"	"aababc"	OK
+	stringSplosion("ab") → "aab"	"aab"	OK
+	stringSplosion("x") → "x"	"x"	OK
+	stringSplosion("fade") → "ffafadfade"	"ffafadfade"	OK
+	stringSplosion("There") 
+		→ "TThTheTherThere"	"TThTheTherThere"	OK
+	stringSplosion("Kitten")
+		→ "KKiKitKittKitteKitten"	"KKiKitKittKitteKitten"	OK
+	stringSplosion("Bye") → "BByBye"	"BByBye"	OK
+	stringSplosion("Good") → "GGoGooGood"	"GGoGooGood"	OK
+	stringSplosion("Bad") → "BBaBad"	"BBaBad"	OK
+	
+	All Correct
+*/
+
+        static string Task10_4(string strIn)
+        {
+            string strSub = "";
+            string strOut = "";
+            for(int i=0; i< strIn.Length; i++)
+            {
+                strSub += strIn[i];
+                strOut += strSub;                
+            }
+            return strOut;
+        }
+
+        /*
+    Warmup-2 > arrayFront9
+
+	Given an array of ints, return true if one of the first 
+	4 elements in the array is a 9. The array length may be 
+	less than 4.
+	
+	
+	arrayFront9([1, 2, 9, 3, 4]) → true
+	arrayFront9([1, 2, 3, 4, 9]) → false
+	arrayFront9([1, 2, 3, 4, 5]) → false
+	
+	Expected	Run
+	arrayFront9([1, 2, 9, 3, 4]) → true	true	OK
+	arrayFront9([1, 2, 3, 4, 9]) → false	false	OK
+	arrayFront9([1, 2, 3, 4, 5]) → false	false	OK
+	arrayFront9([9, 2, 3]) → true	true	OK
+	arrayFront9([1, 9, 9]) → true	true	OK
+	arrayFront9([1, 2, 3]) → false	false	OK
+	arrayFront9([1, 9]) → true	true	OK
+	arrayFront9([5, 5]) → false	false	OK
+	arrayFront9([2]) → false	false	OK
+	arrayFront9([9]) → true	true	OK
+	arrayFront9([]) → false	false	OK
+	arrayFront9([3, 9, 2, 3, 3]) → true	true	OK
+	
+	All Correct
+*/
+
+        static bool Task10_5(int[] mas)
+        {
+            if (mas != null)
+            {
+                for (int i = 0; i < mas.Length; i++)
+                {
+                    if (mas[i] == 9)
+                    {
+                        return true;
+                    }
+                    if (i == 4)
+                        break;
+                }
+            }
+            return false;
+        }
     }
 }
